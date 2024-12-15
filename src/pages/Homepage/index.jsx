@@ -5,10 +5,10 @@ import Recipelist from "../../components/Recipelist"
 import { Link } from "react-router-dom"
 const Homepage = () => {
  const [recipes, setRecipe] = useState([]);
- const [pagination, setPagination] = useState(1);
+ const [pagination, setPagination] = useState(1); //pagination dimulai dari 1
  const [skip, setSkip] = useState(0);
  const [totallist, setTotalList] = useState(0);
- const limit = 9;
+ const limit = 9; //limit data sampai 9, tapi terserah mau sampai berapa
  const getRecipe = async () => {
     try {
         const response = await axios.get(`https://dummyjson.com/recipes?limit=${limit}&skip=${skip}`);
@@ -19,6 +19,8 @@ const Homepage = () => {
         console.log(error);
     }
  }
+ 
+ //fungsi untuk membuat next and previous page
  const totalPage = Math.ceil(totallist / limit);
 
  const previousPage = () => {
